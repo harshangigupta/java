@@ -1,0 +1,52 @@
+
+
+import java.util.*;
+class Main 
+{
+  void mirror2DArray(int[][] arr) 
+  {
+    for (int i = 0; i < arr.length; i++) {
+      int left = 0, right = arr[i].length - 1;
+      while (left < right) {
+        int temp = arr[i][left];
+        arr[i][left] = arr[i][right];
+        arr[i][right] = temp;
+        left++;
+        right--;
+      }
+    }
+  }
+
+  /* Driver program to test above function */
+  public static void main(String[] args)
+  {
+    // Dimensions of a Matrix
+    int n, sum;
+    Scanner s1 = new Scanner(System.in);
+    int[][] twodArray = new int[n][n];
+ // Given Matrix
+    System.out.println("Please enter the size of Matrix : ");
+    n = s1.nextInt();
+    System.out.println("Please enter the values :");
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        twodArray[i][j] = s1.nextInt();
+      }
+    }
+    for (int i = 0; i < twodArray.length; i++) {
+      for (int j = 0; j < twodArray[i].length; j++) {
+        System.out.print(twodArray[i][j] + " ");
+      }
+      System.out.println();
+    }
+    // Function Call
+   void mirror2DArray(twod Array);
+    for (int i = 0; i < twodArray.length; i++) {
+      for (int j = 0; j < twodArray[i].length; j++) {
+        System.out.print(twodArray[i][j] + " ");
+      }
+      System.out.println();
+    }
+    sum += twodArray[0][0] + twodArray[0][n - 1] + twodArray[n - 1][0] + twodArray[n - 1][n - 1];
+  }
+}
