@@ -1,0 +1,64 @@
+import java.io.* ;
+class Cipher
+{
+String cd,de ;
+void accept ( ) throws IOException 
+{
+BufferedReader br = new BufferedReader(newInputSteamReader(System.in)) ;
+System.out.println ("Enter secret code") ;
+cd = br.readLine( ).toUpperCase( ) ;
+System.out.println("Enter text to be deducted") ;
+de = br.readLine( );
+}
+void check( ) 
+{
+for(int i=0 ; i<de.length( ) ; i++) 
+{
+char ch = de.charAt(i) ;
+if (character.lowercase(ch))
+{
+System.out.println("Invalid input") ;
+System.exit(0); 
+}
+}
+}
+void remove( )
+{
+String x = "" ;
+for(int i=0 ; i<cd.length( );i++) 
+{
+char ch = cd.charAt(i) ;
+if(x.indexOf(ch)==-1)
+x=x+ch;
+}
+cd=x; 
+}
+void message( )
+{ 
+String msg = "" ;
+check( ) ;
+remove( ) ;
+for(int i=66 ; i<=90 ; i++)
+{
+if(cd.indexOf((char) i) == -1)
+cd=cd+(char)i ; 
+}
+for(int i=0 ; i<de.length( ) ; i++) 
+{
+char ch = de.charAt(i) ;
+if(cd.isLetter(ch)) 
+{
+int m = cd.indexOf(ch) ;
+msg=msg+(char)(65+m) ; 
+}
+else
+msg=msg+ch ; 
+}
+System.out.println(msg); 
+}
+public static void main(String args[ ]) throws IOException 
+{
+Cipher ob=new Cipher( ) ; 
+ob.accept( ) ;
+ob.message( ) ;
+}}
