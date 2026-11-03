@@ -1,0 +1,48 @@
+import java.util.Scanner;
+public class DeleteWordFromPosition
+{
+ public static void main(String args[])
+ {
+ int i=0,count=1,len=0,pos=0;
+ char ch=' ',last=' ';
+ String sen="",newsen="",wd="",wd1="";
+ Scanner sc=new Scanner(System.in);
+ System.out.print("ENTER A SENTENCE: ");
+ sen =sc.nextLine();
+ len = sen.length();
+ last = sen.charAt(len - 1);
+ if(last != '.' && last != '?' && last != '!')
+ {
+ System.out.println("INVALID INPUT.");
+ return;
+ }
+ sen = sen.toUpperCase();
+ System.out.print("WORD TO BE DELETED: ");
+ wd = sc.next();
+ wd = wd.toUpperCase();
+ System.out.print("WORD POSITION IN THE SENTENCE: ");
+ pos = sc.nextInt();
+ for(i=0;i< len;i++)
+ {
+ ch=sen.charAt(i);
+ if(ch==' '||ch=='.'||ch=='?'||ch=='!')
+ {
+ if(wd1.equals(wd)==true && (count)==pos)
+ {
+ /*do nothing*/
+ }
+ else
+ {
+ newsen=newsen+wd1+ch;
+ }
+ wd1="";
+ count++;
+ }
+ else
+ {
+ wd1=wd1+ch;
+ }
+ }
+ System.out.println("NEW SENTENCE:"+newsen);
+ }
+}
