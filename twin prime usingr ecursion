@@ -1,0 +1,56 @@
+import java.util.Scanner;
+public class TwinPrimeUsingRecursion
+{
+    public static boolean isPrime(int n,int i)
+    {
+        if(n<=1)
+        {
+            return false;
+        }
+
+        else if(i==n)
+        {
+            return true;
+        }
+
+        else if(n%i==0)
+        {
+            return false;
+        }
+        else
+        {
+            return  isPrime(n,(i+1));
+        }
+    }
+
+    public static void main()
+    {
+        int firstNumber=0,secondNumber=0,difference=0;
+        boolean isFirstNumberPrime=false,isSecondNumberPrime=false;
+        Scanner sc=new Scanner(System.in);
+        System.out.println("ENTER FIRST NUMBER:");
+        firstNumber=sc.nextInt();
+        System.out.println("ENTER SECOND NUMBER:");
+        secondNumber=sc.nextInt();
+        isFirstNumberPrime=isPrime(firstNumber,2);
+        isSecondNumberPrime=isPrime(secondNumber,2);
+
+        difference=Math.abs(firstNumber-secondNumber);
+        if(difference==2)
+        {
+            if(isFirstNumberPrime==false || isSecondNumberPrime==false)
+            {
+               System.out.println(firstNumber+" AND "+secondNumber+" ARE NOT TWIN PRIME NUMBERS");
+
+            }
+            else
+            {
+                System.out.println(firstNumber+" AND "+secondNumber+" ARE TWIN PRIME NUMBERS");
+            }
+        }
+        else
+        {
+            System.out.println(firstNumber+" AND "+secondNumber+" ARE NOT TWIN PRIME NUMBERS");
+        }
+    }
+}
