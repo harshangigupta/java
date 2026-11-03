@@ -1,0 +1,41 @@
+import java.util.Scanner;
+public class PronicNumberInArray
+{
+    public static void main(String[] args)
+    {
+        int [] arr;
+
+        int n=0,i=0,j=0;
+        boolean flag=false;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter a number of elements in the array");
+        n = sc.nextInt();
+        arr=new int[n];
+        System.out.println("Enter numbers in array");
+
+        for(i=0;i< n;i++)
+        {
+           arr[i]=sc.nextInt();
+        }
+
+        System.out.println("pronic Elements in an array :");
+        for(i=0;i< n;i++)
+        {
+            flag=false;
+            for(j=0;j<=arr[i];j++)
+            {
+                if((j*(j+1))==arr[i])
+                {
+                    flag=true;
+                    break;
+                }
+            }
+            if(flag==true)
+            {
+                System.out.print(arr[i] + " ");
+            }
+
+        }
+    }
+}
