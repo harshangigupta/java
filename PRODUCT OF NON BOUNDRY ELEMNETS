@@ -1,0 +1,110 @@
+import java.util.Scanner;
+class Mainish
+ {
+    int arr[][], m, product = 1;
+   static int exeunt()
+ {
+        System.out.println("INVALID INPUT");
+        System.exit(0);
+        return -1; 
+    }
+  void accept()
+ {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Size Of Matrix");
+        m = ((m = sc.nextInt()) < 4 || m > 10) ? exeunt() : m;
+        arr = new int[m][m];
+        fill(sc);
+        sc.close();
+    }
+    void fill(Scanner sc) 
+{
+        System.out.println("Enter Positive Numbers : ");
+        for (int i = 0; i < m; i++) 
+{
+         for (int j = 0; j < m;)
+ {
+          int in = sc.nextInt();
+           if (in < 0)
+           System.out.println("Only Positive Numbers");
+             else
+             arr[i][j++] = in;
+            }
+        }
+        System.out.println("ORIGINAL MATRIX : ");
+        display();
+    }
+    void sortEdge()
+ {
+        int n = (m * 2 + (m - 2) * 2);
+        int edge[] = new int[n];
+        for (int i = 0, k = 0; i < m; i++) 
+{
+          for (int j = 0; j < m; j++)
+ {
+            if (i == 0 || i == m - 1 || j == 0 || j == m - 1)
+             edge[k++] = arr[i][j];
+            }
+        }
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (edge[j] > edge[j + 1]) {
+                    int temp = edge[j];
+                    edge[j] = edge[j + 1];
+                    edge[j + 1] = temp;
+                }
+            }
+        }
+      int k = -1;
+        for (int j = 0; j < m; j++)
+            arr[0][j] = edge[++k];
+        for (int i = 1; i < m; i++)
+            arr[i][m - 1] = edge[++k];
+        for (int j = m - 2; j > -1; j--)
+            arr[m - 1][j] = edge[++k];
+        for (int i = m - 2; i > 0; i--)
+            arr[i][0] = edge[++k];
+       System.out.println("REARRANGED MATRIX");
+        display();
+    }
+    void display() 
+{
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < m; j++)
+                System.out.print(arr[i][j] + "\t");
+            System.out.println();
+        }
+    }
+
+    void displayEnclosing()
+ {
+        System.out.println("NON BOUNDRY ELEMENTS");
+        for (int i = 0; i < m; i++) 
+{
+            System.out.print("\t");
+            for (int j = 0; j < m; j++)
+ {
+                if (!(i == 0 || i == m - 1 || j == 0 || j == m - 1))
+ {
+                    product *= arr[i][j];
+                    System.out.print(arr[i][j] + "\t");
+                }
+                }
+                    System.out.println("\t"); // "\t" not required
+               }
+                    System.out.println("PRODUCT OF NON BOUNDRY ELEMNETS : "+product);
+    }
+    public static void main(String[] args)
+ {
+        Mainish mat = new Mainish();
+        mat.accept();
+        mat.sortEdge();
+        mat.displayEnclosing();
+    }
+}  
+
+
+
+
+
+
